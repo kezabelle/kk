@@ -1,9 +1,10 @@
 Django>1.8,<1.9
-#-e git+git@github.com:django/django.git#egg=django
 -e git+git@github.com:kezabelle/django-varlet.git#egg=django-varlet
 -e git+git@github.com:litchfield/django-fastsitemaps.git#egg=django-fastsitemaps
 -e git+git@github.com:kezabelle/django-stagesetting.git#egg=django-stagesetting
-
+-e git+https://github.com/kezabelle/django-haystackbrowser.git#egg=django-haystackbrowser
 django-jackfrost>=0.4.0
 django-stagesetting>=0.4.2
+django-haystack==2.4.1
+Whoosh==2.7.2
 django-debug-toolbar==1.4

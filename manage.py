@@ -45,12 +45,20 @@ settings.configure(
         'django.contrib.auth',
         'django.contrib.admin',
         'varlet.apps.PageAppConfig',
+        'haystack',
+        'haystackbrowser',
     ) + DEBUG_APPS,
     DATABASES={
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
+    },
+    HAYSTACK_CONNECTIONS={
+        'default': {
+            'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+            'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+        },
     },
     STATIC_ROOT=os.path.join(BASE_DIR, '__static__'),
     MEDIA_ROOT=os.path.join(BASE_DIR, '__uploads__'),
