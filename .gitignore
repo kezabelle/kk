@@ -1,1 +1,4 @@
 db.sqlite3
+lib-python
+lib_pypy
+site-packages

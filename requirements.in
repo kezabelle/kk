@@ -6,3 +6,4 @@ Django>1.8,<1.9
 
 django-jackfrost>=0.4.0
 django-stagesetting>=0.4.2
+django-debug-toolbar==1.4

@@ -9,10 +9,25 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'TESTTESTTESTTESTTESTTESTTESTTEST')
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,testserver').split(',')
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 
+if DEBUG:
+    DEBUG_APPS = (
+        'debug_toolbar.apps.DebugToolbarConfig',
+    )
+    DEBUG_MIDDLEWARE = (
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    )
+else:
+    DEBUG_APPS = ()
+    DEBUG_MIDDLEWARE = ()
+
 settings.configure(
     DEBUG=DEBUG,
+    # have to manually setup djdt because of lazy_urls, see
+    # https://code.djangoproject.com/ticket/26287
+    DEBUG_TOOLBAR_PATCH_SETTINGS=False,
     SECRET_KEY=SECRET_KEY,
     ALLOWED_HOSTS=ALLOWED_HOSTS,
+    INTERNAL_IPS=('127.0.0.1',),
     ROOT_URLCONF=__name__,
     MIDDLEWARE_CLASSES=(
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -21,7 +36,7 @@ settings.configure(
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    ),
+    ) + DEBUG_MIDDLEWARE,
     INSTALLED_APPS=(
         'django.contrib.staticfiles',  # better runserver
         'django.contrib.contenttypes',
@@ -30,7 +45,7 @@ settings.configure(
         'django.contrib.auth',
         'django.contrib.admin',
         'varlet.apps.PageAppConfig',
-    ),
+    ) + DEBUG_APPS,
     DATABASES={
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -81,8 +96,14 @@ def lazy_urls():
         url(r'^sitemap.xml$', sitemap, {'sitemaps': {'pages': PageSitemap()}}, name='xml_sitemap'),
         url(r'^', include(varlet_urls)),
     ]
+    if DEBUG:
+        from debug_toolbar import urls as djdt
+        urlpatterns = [
+            url(r'^__djdt__/', include(djdt))
+        ] + urlpatterns
     return urlpatterns
 from django.utils.functional import SimpleLazyObject
+# Can't use lazy(lazy_urls, list) because it doesn't implement __iter__?
 urlpatterns = SimpleLazyObject(lazy_urls)
 
 
