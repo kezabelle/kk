@@ -85,7 +85,14 @@ settings.configure(
                 ],
             },
         },
-    ]
+    ],
+    REST_FRAMEWORK={
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        ),
+        'PAGE_SIZE': 25,
+        'COMPACT_JSON': False,
+    }
 )
 
 
@@ -93,14 +100,21 @@ settings.configure(
 def lazy_urls():
     from django.conf.urls import url, include
     from django.contrib import admin
+    from rest_framework.routers import DefaultRouter
     try:
         from fastsitemaps.views import sitemap
     except ImportError:
         from django.contrib.sitemaps.views import sitemap
     from varlet import named_urls as varlet_urls
     from varlet.sitemaps import PageSitemap
+    from varlet.views_drf import PageViewSet
+
+    router = DefaultRouter()
+    router.register('pages', PageViewSet)
+
     urlpatterns = [
         url(r'^admin/', include(admin.site.urls)),
+        url(r'^api/', include(router.urls)),
         url(r'^sitemap.xml$', sitemap, {'sitemaps': {'pages': PageSitemap()}}, name='xml_sitemap'),
         url(r'^', include(varlet_urls)),
     ]
