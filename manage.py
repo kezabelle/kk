@@ -44,6 +44,8 @@ settings.configure(
         'django.contrib.sitemaps',
         'django.contrib.auth',
         'django.contrib.admin',
+        'sniplates',
+        'pipeline',
         'varlet.apps.PageAppConfig',
         'haystack',
         'haystackbrowser',
@@ -64,6 +66,15 @@ settings.configure(
     MEDIA_ROOT=os.path.join(BASE_DIR, '__uploads__'),
     STATIC_URL='/__static__/',
     MEDIA_URL='/__uploads__/',
+    STATICFILES_DIRS=[
+        os.path.join(BASE_DIR, 'static'),
+    ],
+    STATICFILES_FINDERS=[
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'pipeline.finders.PipelineFinder',
+    ],
+    STATICFILES_STORAGE='pipeline.storage.PipelineCachedStorage',
     MESSAGE_STORAGE='django.contrib.messages.storage.cookie.CookieStorage',
     SESSION_ENGINE='django.contrib.sessions.backends.signed_cookies',
     SESSION_COOKIE_HTTPONLY=True,
@@ -86,6 +97,29 @@ settings.configure(
             },
         },
     ],
+    PIPELINE={
+        # 'PIPELINE_ENABLED': True,
+        # 'PIPELINE_COLLECTOR_ENABLED': True,
+        'SHOW_ERRORS_INLINE': True,
+        'CSS_COMPRESSOR': None,
+        'JS_COMPRESSOR': None,
+        'STYLESHEETS': {
+            'application': {
+                'source_filenames': [
+                    'css/normalize.css',
+                    'css/skeleton.css',
+                    'css/logo.css',
+                ],
+                'output_filename': 'css/application.css',
+            }
+        },
+        'JAVASCRIPT': {
+            'application': {
+                'source_filenames': [],
+                'output_filename': 'js/application.js',
+            }
+        }
+    },
     REST_FRAMEWORK={
         'DEFAULT_RENDERER_CLASSES': (
             'rest_framework.renderers.JSONRenderer',

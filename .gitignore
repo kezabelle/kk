@@ -3,3 +3,4 @@ lib-python
 lib_pypy
 site-packages
 whoosh_index
+__static__

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-{% load static %}
+{% load static sniplates pipeline %}
+{% load_widgets main="widgets/main.html" %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,11 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{% block meta_title %}{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}{% endblock %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {% stylesheet 'application' %}
 </head>
-<body>
-{% block content %}
-hello!
-{% endblock %}
+<body class="{% block body_class %}{% endblock %}{% if debug %} DEBUG-MODE{% endif %}">
+<div class="container">
+    {% widget "main:logo" ns="logo" %}
+    {% block content %}
+    hello!
+    {% endblock %}
+
+
+    {% widget "main:logo" ns="logo" size=0.75 %}
+</div>
 </body>
 </html>

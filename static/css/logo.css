@@ -1,0 +1,32 @@
+.logo {
+    display: inline-block;
+    margin: 0.25em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    font-weight: normal;
+    -webkit-transition: background-color 0.375s;
+    -moz-transition: background-color 0.375s;
+    -ms-transition: background-color 0.375s;
+    -o-transition: background-color 0.375s;
+    transition: background-color 0.375s;
+    text-rendering: geometricPrecision;
+}
+.logo:hover,
+.logo:active,
+.logo:focus {
+    background-color: #4cae4c;
+}
+
+.logo-line1 {
+    display: block;
+    font-weight: bold;
+    /*letter-spacing: 0.031em;*/
+}
+.logo-line2 {
+    display: block;
+    /*letter-spacing: -0.031em;*/
+    margin-top: -0.250em;
+}
