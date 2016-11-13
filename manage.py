@@ -46,9 +46,7 @@ settings.configure(
         'django.contrib.admin',
         'sniplates',
         'pipeline',
-        'varlet.apps.PageAppConfig',
-        'haystack',
-        'haystackbrowser',
+        'varlet',
     ) + DEBUG_APPS,
     DATABASES={
         'default': {
@@ -139,12 +137,10 @@ def lazy_urls():
         from fastsitemaps.views import sitemap
     except ImportError:
         from django.contrib.sitemaps.views import sitemap
-    from varlet import named_urls as varlet_urls
+    from varlet.urls import urlpatterns as varlet_urls
     from varlet.sitemaps import PageSitemap
-    from varlet.views_drf import PageViewSet
 
     router = DefaultRouter()
-    router.register('pages', PageViewSet)
 
     urlpatterns = [
         url(r'^admin/', include(admin.site.urls)),
