@@ -140,6 +140,7 @@ def lazy_urls():
     except ImportError:
         from django.contrib.sitemaps.views import sitemap
     from varlet.urls import urlpatterns as varlet_urls
+    from jobs.urls import urlpatterns as job_urls
     from varlet.sitemaps import PageSitemap
 
     router = DefaultRouter()
@@ -148,6 +149,7 @@ def lazy_urls():
         url(r'^admin/', include(admin.site.urls)),
         url(r'^api/', include(router.urls)),
         url(r'^sitemap.xml$', sitemap, {'sitemaps': {'pages': PageSitemap()}}, name='xml_sitemap'),
+        url(r'^career/', include(job_urls)),
         url(r'^', include(varlet_urls)),
     ]
     if DEBUG:

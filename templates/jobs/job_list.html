@@ -1,0 +1,8 @@
+{% extends "jobs/base.html" %}
+{% load sniplates %}
+{% load_widgets main="widgets/main.html" %}
+{% block content %}
+{% for obj in object_list %}
+{% widget "main:job_summary" ns="jobsummary" job=obj %}
+{% endfor %}
+{% endblock content %}

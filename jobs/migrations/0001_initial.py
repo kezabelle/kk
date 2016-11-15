@@ -19,9 +19,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200)),
                 ('start', models.DateTimeField()),
-                ('end', models.DateTimeField(null=True, blank=True)),
+                ('end', models.DateTimeField(blank=True, null=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
+                ('slug', models.SlugField()),
                 ('summary', models.TextField()),
             ],
             options={
