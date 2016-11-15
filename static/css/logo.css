@@ -1,5 +1,13 @@
+.logo-wrapper {
+    font-size: 0;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
 .logo {
     display: inline-block;
+    text-decoration: none;
     margin: 0.25em;
     text-align: center;
     background-color: black;

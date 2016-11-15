@@ -108,6 +108,7 @@ settings.configure(
                     'css/normalize.css',
                     'css/skeleton.css',
                     'css/logo.css',
+                    'css/jobsummary.css',
                 ],
                 'output_filename': 'css/application.css',
             }

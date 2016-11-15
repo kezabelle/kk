@@ -1,0 +1,18 @@
+.jobsummary-wrapper
+{
+    font-size: 0;
+}
+.jobsummary {
+    color: #666;
+    text-align: left;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+.jobsummary-title,
+.jobsummary-dates
+{
+    font-family: Geneva,Tahoma,Verdana,sans-serif;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}

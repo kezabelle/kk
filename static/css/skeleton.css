@@ -1,9 +1,22 @@
-body {
-
+html, body {
+  height: 100%;
 }
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -3rem;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 3rem;
+}
+
 .container {
     display: block;
-    width: 100%;
+    width: 400px;
     margin: 0 auto;
     text-align: center;
 }
