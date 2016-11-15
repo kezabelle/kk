@@ -47,6 +47,7 @@ settings.configure(
         'sniplates',
         'pipeline',
         'varlet',
+        'jobs',
     ) + DEBUG_APPS,
     DATABASES={
         'default': {
