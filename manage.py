@@ -109,6 +109,7 @@ settings.configure(
                     'css/skeleton.css',
                     'css/logo.css',
                     'css/jobsummary.css',
+                    'css/mainnav.css',
                 ],
                 'output_filename': 'css/application.css',
             }

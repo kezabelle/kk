@@ -1,3 +1,4 @@
+{% load sniplates %}
 {% block logo %}
 <a href="{% url 'page_detail' %}" class="{{ ns }}-wrapper">
     <h1 class="{{ ns }}" style="font-size: {{ size|default:2 }}rem;"><span class="{{ ns }}-line1">Keryn</span> <span class="{{ ns }}-line2">Knight</span></h1>
@@ -7,11 +8,28 @@
 {% block job_summary %}
 <div class="{{ ns }}-wrapper">
     <div class="{{ ns }}">
-        <h3 class="{{ ns }}-title">{{ job.title }}</h3>
-        <h4 class="{{ ns }}-dates">{{ job.start|date:"m/Y" }}&mdash;{{ job.end|date:"m/Y"|default:'' }}</h4>
+        <h3 class="{{ ns }}-title"><a href="{{ job.get_absolute_url }}">{{ job.title }}</a></h3>
+        <h4 class="{{ ns }}-dates"><a href="{{ job.get_absolute_url }}">{{ job.start|date:"m/Y" }}&mdash;{{ job.end|date:"m/Y"|default:'' }}</a></h4>
         <div class="{{ ns }}-shortdescription">
             <p>{{ job.get_short_description }}</p>
         </div>
     </div>
 </div>
 {% endblock job_summary %}
+
+
+{% block navigation %}
+<span class="{{ ns }}-wrapper">
+    <ol class="{{ ns }}">
+        {% for menuitem in items %}
+        {% reuse 'navigation_menu_item' ns=ns|add:'-item' item=menuitem index=forloop.counter %}
+        {% endfor %}
+    </ol>
+</span>
+{% endblock navigation %}
+
+{% block navigation_menu_item %}
+<li class="{{ ns }}">
+    <a href="{{ item.get_absolute_url }}" class="{{ ns }}-link">{{ item }}</a>
+</li>
+{% endblock navigation_menu_item %}

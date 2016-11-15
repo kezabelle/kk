@@ -9,13 +9,17 @@
     <title>{% block meta_title %}{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     {% stylesheet 'application' %}
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}{% if debug %} DEBUG-MODE{% endif %}">
 <div class="page-wrap">
 <div class="container">
     {% widget "main:logo" ns="logo" %}
+    {% widget 'main:navigation' ns='mainnav' items=1234|make_list %}
 </div>
 <div class="container">
+
+
     {% block content %}
     {% load jobs %}
     {% get_jobs as jobbers %}

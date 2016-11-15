@@ -1,0 +1,28 @@
+.mainnav-wrapper {
+    font-size: 0;
+    overflow: hidden;
+}
+
+.mainnav {
+    background: red;
+    font-size: 2rem;
+    margin: 0.25em;
+    padding: 0;
+    display: inline-block;
+    list-style: none;
+    overflow: hidden;
+}
+
+.mainnav-item {
+    background: green;
+    display: inline-block;
+    text-align: center;
+    padding: 0.25em 0.5em;
+    margin: 0 0.25em 0 0;
+    float: left;
+}
+
+.mainnav-item-link {
+    text-decoration: none;
+    color: white;
+}
