@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-from django.conf.urls import url
+try:
+    from django.conf.urls import url
+except ImportError:
+    from django.conf.urls import url
 from .views import job_detail, job_list
 
 job_detail_url = url(

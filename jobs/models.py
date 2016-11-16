@@ -2,7 +2,10 @@
 from __future__ import unicode_literals, absolute_import
 import swapper
 from django.db import models
-from django.urls import reverse
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 from django.utils.encoding import force_str
 
 
