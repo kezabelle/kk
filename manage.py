@@ -52,6 +52,8 @@ settings.configure(
         'jobs',
         'path2css',
         'font_awesome',
+
+        'siteboot',
     ) + DEBUG_APPS,
     DATABASES={
         'default': {
