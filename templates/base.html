@@ -11,15 +11,13 @@
     {% stylesheet 'application' %}
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js" async></script>
 </head>
-<body class="{% block body_class %}{% path2css request.path prefix='qzh-' %}{% endblock %}{% if debug %} DEBUG-MODE{% endif %}">
+<body class="{% block body_class %}{% path2css request.path prefix='qzh-' %}{% endblock %}{% if debug and 'nodebug' not in request.GET %} DEBUG-MODE{% endif %}">
 <div class="page-wrap">
-<div class="container">
+<div class="container container-header">
     {% widget "main:logo" ns="logo" %}
     {% widget 'main:navigation' ns='mainnav' items=1234|make_list %}
 </div>
 <div class="container">
-
-
     {% block content %}
     {% load jobs %}
     {% get_jobs as jobbers %}
@@ -32,6 +30,14 @@
 <div class="site-footer">
 <div class="container">
     {% widget "main:logo" ns="logo" size=0.75 %}
+    <div class="site-footer-icons">
+    {% widget "main:link_icon" url="https://github.com/kezabelle/" name='github-alt' tooltip="View my GitHub profile" tooltip_position="up" %}
+    {% widget "main:link_icon" url="https://twitter.com/kezabelle/" name='twitter' tooltip="View my twitter" tooltip_position="up" %}
+    {% widget "main:link_icon" url="http://www.last.fm/user/kezabelle" name='lastfm' tooltip="AudioScrobble history" tooltip_position="up" %}
+    {% widget "main:link_icon" url="https://pinboard.in/u:kezabelle/" name='delicious' tooltip="Saved bookmarks on Pinboard" tooltip_position="up" %}
+    {% widget "main:link_icon" url="https://www.reddit.com/user/kezabelle/" name='reddit-alien' tooltip="Reddit" tooltip_position="up" %}
+    {% widget "main:admin_index" user=request.user tooltip_position="up" %}
+    </div>
 </div>
 </div>
 </body>

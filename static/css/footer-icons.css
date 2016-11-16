@@ -1,0 +1,13 @@
+.site-footer-icons {
+    font-size: 0;
+}
+
+.link-icon-wrapper {
+    color: #4d4d4d;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.link-icon-wrapper:hover {
+    color: #ff3b94;
+}

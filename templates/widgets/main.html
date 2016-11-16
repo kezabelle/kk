@@ -30,6 +30,23 @@
 
 {% block navigation_menu_item %}
 <li class="{{ ns }}">
-    <a href="{{ item.get_absolute_url }}" class="{{ ns }}-link">{{ item }}</a>
+    <a href="{{ item.get_absolute_url }}" class="{{ ns }}-link">hello</a>
 </li>
 {% endblock navigation_menu_item %}
+
+{% block icon %}
+<span class="{{ ns }}-tooltip" {% if tooltip %}data-balloon="{{ tooltip }}" data-balloon-pos="{{ tooltip_position|default:'down' }}"{% endif %}><i class="fa fa-{{ name }}" aria-hidden="true"></i></span>
+{% endblock icon %}
+
+{% block link_icon %}
+{% with ns=ns|default:'link-icon-wrapper' %}
+<a href="{{ url }}" class="{{ ns }}">{% reuse 'icon' name=name %}</a>
+{% endwith %}
+{% endblock link_icon %}
+
+{% block admin_index %}
+{% if user.is_authenticated %}
+    {% url 'admin:index' as ADMIN_INDEX %}
+    {% reuse 'link_icon' url=ADMIN_INDEX name='sign-in' tooltip="Go to admin" %}
+{% endif %}
+{% endblock admin_index %}

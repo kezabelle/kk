@@ -49,6 +49,7 @@ settings.configure(
         'varlet',
         'jobs',
         'path2css',
+        'font_awesome',
     ) + DEBUG_APPS,
     DATABASES={
         'default': {
@@ -110,8 +111,11 @@ settings.configure(
                     'css/normalize.css',
                     'css/skeleton.css',
                     'css/logo.css',
-                    'css/jobsummary.css',
                     'css/mainnav.css',
+                    'css/font-awesome.css',
+                    'css/balloon.css',
+                    'css/footer-icons.css',
+                    'css/jobsummary.css',
                 ],
                 'output_filename': 'css/application.css',
             }

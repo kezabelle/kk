@@ -4,25 +4,69 @@
 }
 
 .mainnav {
-    background: red;
-    font-size: 2rem;
-    margin: 0.25em;
+    float: right;
+    margin: 2.5rem 0 0 0;
     padding: 0;
     display: inline-block;
     list-style: none;
     overflow: hidden;
 }
 
+body.DEBUG-MODE .mainnav {
+    background: rgba(255, 0, 0, 0.05);
+}
+
 .mainnav-item {
-    background: green;
     display: inline-block;
+    font-size: 0.875rem;
+    line-height: 1em;
     text-align: center;
-    padding: 0.25em 0.5em;
-    margin: 0 0.25em 0 0;
+    padding: 0 0.5em;
+    margin: 0 0.25em 0 1.5em;
     float: left;
 }
 
+
+body.DEBUG-MODE .mainnav-item {
+    background: rgba(255, 0, 0, 0.05);
+}
+
 .mainnav-item-link {
+    display: inline-block;
     text-decoration: none;
-    color: white;
+    color: #4d4d4d;
+    padding: 0.25em 0;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: relative;
+}
+/* principle taken from http://defatch-demo.com/themes/juster/jt-portfolio/blog/ */
+.mainnav-item-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 10px;
+    z-index: -1;
+  background: #FFE761;
+  top: 0.375em;
+  left: 0;
+  display: block;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.mainnav-item-link:hover:after {
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+  width: 100%;
 }

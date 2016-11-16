@@ -16,7 +16,6 @@ html, body {
 
 .container {
     display: block;
-    width: 100%;
     margin: 0 auto;
 }
 
@@ -25,3 +24,13 @@ html, body {
     padding: 0.25rem;
     text-align: center;
 }
+
+.container-header {
+    padding: 4rem 3rem 0 3rem;
+}
+
+.site-footer-icons {
+    display: inline-block;
+    float: right;
+}
+
