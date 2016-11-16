@@ -48,6 +48,7 @@ settings.configure(
         'pipeline',
         'varlet',
         'jobs',
+        'path2css',
     ) + DEBUG_APPS,
     DATABASES={
         'default': {
@@ -91,6 +92,7 @@ settings.configure(
                     'django.template.context_processors.debug',
                     'django.template.context_processors.request',
                     'django.contrib.auth.context_processors.auth',
+                    'path2css.context_processor',
                     'django.contrib.messages.context_processors.messages',
                 ],
             },

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static sniplates pipeline %}
+{% load static sniplates pipeline path2css %}
 {% load_widgets main="widgets/main.html" %}
 <html lang="en">
 <head>
@@ -9,9 +9,9 @@
     <title>{% block meta_title %}{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     {% stylesheet 'application' %}
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js" async></script>
 </head>
-<body class="{% block body_class %}{% endblock %}{% if debug %} DEBUG-MODE{% endif %}">
+<body class="{% block body_class %}{% path2css request.path prefix='qzh-' %}{% endblock %}{% if debug %} DEBUG-MODE{% endif %}">
 <div class="page-wrap">
 <div class="container">
     {% widget "main:logo" ns="logo" %}
