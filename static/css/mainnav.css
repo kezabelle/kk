@@ -25,6 +25,12 @@ body.DEBUG-MODE .mainnav {
     margin: 0 0.25em 0 1.5em;
     float: left;
 }
+.mainnav-item:first-child {
+    margin-left: 0;
+}
+.mainnav-item:last-child {
+    margin-right: 0;
+}
 
 
 body.DEBUG-MODE .mainnav-item {

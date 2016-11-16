@@ -17,20 +17,24 @@ html, body {
 .container {
     display: block;
     margin: 0 auto;
+    clear: both;
 }
 
 .site-footer {
     border-top: 1px solid #DDD;
-    padding: 0.25rem;
-    text-align: center;
+    padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+    text-align: left;
 }
 
 .container-header {
     padding: 4rem 3rem 0 3rem;
 }
-
+.container-content,
+.container-footer {
+    padding: 0 3rem;
+}
 .site-footer-icons {
+    font-size: 0;
     display: inline-block;
     float: right;
 }
-
