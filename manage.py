@@ -43,6 +43,8 @@ settings.configure(
         'django.contrib.sites',
         'django.contrib.sitemaps',
         'django.contrib.auth',
+        'flat_responsive',
+        'flat',
         'django.contrib.admin',
         'sniplates',
         'pipeline',
