@@ -21,6 +21,7 @@ else:
     DEBUG_MIDDLEWARE = ()
 
 settings.configure(
+    BASE_DIR=BASE_DIR,
     DEBUG=DEBUG,
     # have to manually setup djdt because of lazy_urls, see
     # https://code.djangoproject.com/ticket/26287
@@ -51,6 +52,8 @@ settings.configure(
         'varlet',
         'jobs',
         'path2css',
+        'treebeard',
+        'menuhin',
         'font_awesome',
 
         'siteboot',

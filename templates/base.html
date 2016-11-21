@@ -15,6 +15,9 @@
 <div class="page-wrap">
 <div class="container container-header">
     {% widget "main:logo" ns="logo" %}
+    {% load menuhin %}
+    {% show_menu "default" %}
+    {% show_breadcrumbs request.path %}
     {% widget 'main:navigation' ns='mainnav' items=1234|make_list %}
 </div>
 <div class="container container-content">
