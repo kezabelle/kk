@@ -148,6 +148,7 @@ settings.configure(
 def lazy_urls():
     from django.conf.urls import url, include
     from django.contrib import admin
+    from django.views import defaults as default_views
     from rest_framework.routers import DefaultRouter
     try:
         from fastsitemaps.views import sitemap
@@ -160,6 +161,13 @@ def lazy_urls():
     router = DefaultRouter()
 
     urlpatterns = [
+        url(r'^400/$', default_views.bad_request,
+            kwargs={'exception': Exception('Bad Request!')}),
+        url(r'^403/$', default_views.permission_denied,
+            kwargs={'exception': Exception('Permission Denied')}),
+        url(r'^404/$', default_views.page_not_found,
+            kwargs={'exception': Exception('Page not Found')}),
+        url(r'^500/$', default_views.server_error),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^api/', include(router.urls)),
         url(r'^sitemap.xml$', sitemap, {'sitemaps': {'pages': PageSitemap()}}, name='xml_sitemap'),
